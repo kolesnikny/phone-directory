@@ -1,0 +1,12 @@
+.contacts-book {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+  
+.contacts-list{
+}
+
+.current-contact{
+       
+}
