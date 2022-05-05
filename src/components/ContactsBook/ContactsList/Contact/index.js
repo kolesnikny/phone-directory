@@ -6,8 +6,6 @@ const Contact = (props) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const checkContact = (event) => {
-    // console.log(checkedElement);
-    // checkedElement.classList.remove(styles.checked);
     setIsChecked(true);
     props.check(event.target.attributes.name.value);
   };

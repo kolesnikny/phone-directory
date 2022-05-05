@@ -11,9 +11,6 @@ const ContactsBook = (props) => {
     currentContat: null,
   });
 
-  const [isFetching, setIsFetching] = useState(true);
-  const [isError, setIsError] = useState(false);
-
   useEffect(() => {
     getPhones().then((data) => {
       dispatch({
@@ -21,12 +18,6 @@ const ContactsBook = (props) => {
         data,
       });
     });
-    // .catch(() => {
-    //   setIsError(true);
-    // })
-    // .finnaly(() => {
-    //   setIsFetching(false);
-    // });
   }, []);
 
   const changeCurrentContact = (contactId) => {
@@ -36,21 +27,8 @@ const ContactsBook = (props) => {
     });
   };
 
-  // const handlerLetter = ({ target }) => {
-  //   setCheckedLetter(target.attributes.name.value);
-  // };
-
-  // const filteredValue = useMemo(() => {
-  //   return phonesData.filter((item) => {
-  //     return item.name.last.startsWith(checkedLetter);
-  //   });
-  // }, [checkedLetter]);
-
   return (
     <section className={styles['contacts-book']}>
-      {/* {isError && <div>Some ERROR happening</div>}
-      {isFetching && <div>Loading...</div>} */}
-      {/* <div classnames={styles['contacts-list']}></div> */}
       <ContactsList contacts={state.contacts} handler={changeCurrentContact} />
       <CurrentContact contact={state.currentContat} />
     </section>
