@@ -1,5 +1,19 @@
+.contacts-list{
+    overflow: scroll;
+}
+
+.alphabet-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 0.7em;
+    list-style: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
 .contacts-container{
-    
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -14,9 +28,16 @@
     row-gap: 0.35em;
     justify-content: start;
     align-items: flex-start;
+    
 }
 
-.contacts > li{
+.contact{
     width: 100%;
     font-size: 1.2em;
 }
+
+.checked{
+    border: 1px solid rgb(117, 117, 117);
+    
+}
+

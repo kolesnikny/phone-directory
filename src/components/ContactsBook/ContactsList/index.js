@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import AlphabetPointer from './AlphabetPointer';
+import Contact from './Contact';
 import styles from './ContactsList.module.css';
 
 const comparator = (a, b) => {
@@ -13,33 +15,45 @@ const comparator = (a, b) => {
 };
 
 const ContactsList = (props) => {
+  const [letterAlphabet, setLetterAlphabet] = useState('A');
   const contactsEntries = [...props.contacts.entries()];
 
-  const checkContact = (event) => {
-    props.handler(event.target.attributes.name.value);
+  const setAlphabetPointer = (symbol) => {
+    setLetterAlphabet(symbol);
   };
 
   const layout = contactsEntries.map(([letter, contacts], index) => {
     contacts.sort(comparator);
-    return (
-      <div className={styles['contacts-container']} key={index}>
-        <h1 key={letter}>{letter}</h1>
-        <ul className={styles['contacts']}>
-          {contacts.map((user) => (
-            <li
-              key={user.login.uuid}
-              name={`${letter} ${user.login.uuid}`}
-              onClick={checkContact}
-            >
-              {user.name.last}, {user.name.first}
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
+    if (letter === letterAlphabet) {
+      return (
+        <div className={styles['contacts-container']} key={index}>
+          <h1 key={letter}>{letter}</h1>
+
+          <ul className={styles['contacts']}>
+            {contacts.map((user) => (
+              <Contact
+                keyProp={user.login.uuid}
+                nameProp={`${letter} ${user.login.uuid}`}
+                check={props.handler}
+              >
+                {user.name.last}, {user.name.first}
+              </Contact>
+            ))}
+          </ul>
+        </div>
+      );
+    }
   });
 
-  return <>{layout}</>;
+  return (
+    <div className={styles['contacts-list']}>
+      <AlphabetPointer
+        letters={[...props.contacts.keys()]}
+        setAlphabet={setAlphabetPointer}
+      />
+      {layout}
+    </div>
+  );
 };
 
 export default ContactsList;

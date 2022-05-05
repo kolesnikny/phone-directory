@@ -4,7 +4,6 @@ import styles from './CurrentContact.module.css';
 
 const CurrentContact = (props) => {
   const { contact } = props;
-  console.log(contact);
 
   let response = '';
   if (contact) {

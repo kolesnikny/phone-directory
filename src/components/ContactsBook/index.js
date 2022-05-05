@@ -50,12 +50,8 @@ const ContactsBook = (props) => {
     <section className={styles['contacts-book']}>
       {/* {isError && <div>Some ERROR happening</div>}
       {isFetching && <div>Loading...</div>} */}
-      <div classnames={styles['contacts-list']}>
-        <ContactsList
-          contacts={state.contacts}
-          handler={changeCurrentContact}
-        />
-      </div>
+      {/* <div classnames={styles['contacts-list']}></div> */}
+      <ContactsList contacts={state.contacts} handler={changeCurrentContact} />
       <CurrentContact contact={state.currentContat} />
     </section>
   );
