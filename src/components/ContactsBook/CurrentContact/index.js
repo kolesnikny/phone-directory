@@ -3,7 +3,7 @@ import { format } from 'date-fns';
 import styles from './CurrentContact.module.css';
 
 const CurrentContact = (props) => {
-  const { contact } = props;
+  const { contact, isCheckeed } = props;
 
   let response = '';
   if (contact) {

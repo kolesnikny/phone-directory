@@ -24,6 +24,7 @@ const ContactsList = (props) => {
 
   const layout = contactsEntries.map(([letter, contacts], index) => {
     contacts.sort(comparator);
+
     if (letter === letterAlphabet) {
       return (
         <div className={styles['contacts-container']} key={index}>
@@ -35,6 +36,11 @@ const ContactsList = (props) => {
                 keyProp={user.login.uuid}
                 nameProp={`${letter} ${user.login.uuid}`}
                 check={props.handler}
+                isChecked={
+                  props.currentContact
+                    ? props.currentContact.login.uuid === user.login.uuid
+                    : false
+                }
               >
                 {user.name.last}, {user.name.first}
               </Contact>

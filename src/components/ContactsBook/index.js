@@ -29,7 +29,11 @@ const ContactsBook = (props) => {
 
   return (
     <section className={styles['contacts-book']}>
-      <ContactsList contacts={state.contacts} handler={changeCurrentContact} />
+      <ContactsList
+        contacts={state.contacts}
+        currentContact={state.currentContat}
+        handler={changeCurrentContact}
+      />
       <CurrentContact contact={state.currentContat} />
     </section>
   );

@@ -3,16 +3,13 @@ import cx from 'classnames';
 import styles from '../ContactsList.module.css';
 
 const Contact = (props) => {
-  const [isChecked, setIsChecked] = useState(false);
-
   const checkContact = (event) => {
-    setIsChecked(true);
     props.check(event.target.attributes.name.value);
   };
 
   const classnames = cx({
     [styles.contact]: true,
-    [styles.checked]: isChecked,
+    [styles.checked]: props.isChecked,
   });
 
   return (
